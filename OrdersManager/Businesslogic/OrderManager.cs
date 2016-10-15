@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DAL.Abstract;
 using DAL.Models;
@@ -17,21 +18,19 @@ namespace Businesslogic
 
         public async Task<IEnumerable<OrderToUnload>> GetOrders()
         {
-            var items = await _orderRepository.GetItemsAsync();
+            var items = (await _orderRepository.GetItemsAsync());
             var outOrders = new List<OrderToUnload>();
             foreach (var item in items)
             {
-                var outOrder = new OrderToUnload();
-                foreach (var orderDetail in item.OrderDetail)
+                outOrders.AddRange(item.OrderDetail.Select(s => new OrderToUnload()
                 {
-                    outOrder.OrderId = item.ID;
-                    outOrder.OrderDate = item.OrderDate;
-                    outOrder.ProductId = orderDetail.ProductID;
-                    outOrder.ProductName = orderDetail.Product.Name;
-                    outOrder.ProductQuantity = orderDetail.Quantity;
-                    outOrder.UnitPrice = outOrder.UnitPrice;
-                    outOrders.Add(outOrder);
-                }
+                    OrderId = s.ID,
+                OrderDate = s.Order.OrderDate,
+                ProductId = s.ProductID,
+                ProductName = s.Product.Name,
+                ProductQuantity = s.Quantity,
+                UnitPrice = s.UnitPrice
+            }));
             }
             return outOrders;
         }

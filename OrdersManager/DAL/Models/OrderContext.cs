@@ -1,12 +1,15 @@
-﻿using System.Data.Entity;
-
 namespace DAL.Models
 {
-    public class OrdersContext:DbContext
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
+    public partial class OrderContext : DbContext
     {
-        public OrdersContext():base("name: OrdersConnectionString")
+        public OrderContext()
+            : base("name=OrderContext")
         {
-            Database.SetInitializer<OrdersContext>(null);
         }
 
         public virtual DbSet<Order> Order { get; set; }

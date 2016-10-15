@@ -54,8 +54,8 @@
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Concrete\EntityRepository.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderContext.cs" />
     <Compile Include="Models\OrderDetail.cs" />
-    <Compile Include="Models\OrdersContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

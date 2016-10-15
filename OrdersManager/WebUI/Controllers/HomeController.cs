@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Businesslogic;
@@ -17,9 +18,9 @@ namespace WebUI.Controllers
         }
 
         // GET: Home
-        public ActionResult Index()
+        public async Task<int> Index()
         {
-            return View();
+            return (await _orderManager.GetOrders()).Count();
         }
     }
 }

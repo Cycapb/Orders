@@ -10,11 +10,11 @@ namespace DAL.Concrete
     public class EntityRepository<T> : IRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet;
-        private readonly OrdersContext _context;
+        private readonly OrderContext _context;
 
         public EntityRepository()
         {
-            _context = new OrdersContext();
+            _context = new OrderContext();
             _dbSet = _context.Set<T>();
         }
 
