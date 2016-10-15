@@ -9,7 +9,7 @@ namespace DAL.Abstract
         Task<IEnumerable<T>> GetItemsAsync();
         Task<T> GetItemAsync(int id);
         Task DeleteAsync(int id);
-        Task UpdateAsync(int id);
+        Task UpdateAsync(T item);
         Task SaveAsync();
     }
 }
