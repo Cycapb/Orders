@@ -10,23 +10,17 @@ namespace Businesslogic
     public class OrderManager:IOrderManager
     {
         private readonly IRepository<Order> _orderRepository;
-        private readonly IRepository<OrderDetail> _orderDetailRepository;
-        private readonly IRepository<Product> _productRepository;
 
-
-        public OrderManager(IRepository<Order> orderRepository, IRepository<OrderDetail> orderDetailRepository, IRepository<Product> productRepository)
+        public OrderManager(IRepository<Order> orderRepository)
         {
             _orderRepository = orderRepository;
-            _orderDetailRepository = orderDetailRepository;
-            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<OrderToUnload>> GetOrders()
         {
-            var orders = (await _orderRepository.GetItemsAsync()).ToList();
-            var orderDetails = await _orderDetailRepository.GetItemsAsync();
+            var orders =  await _orderRepository.GetItemsAsync();
             var outOrders = (from o in orders
-                         join od in orderDetails on o.ID equals od.OrderID
+                         from od in o.OrderDetail
                          select new OrderToUnload()
                          {
                              OrderId = o.ID,

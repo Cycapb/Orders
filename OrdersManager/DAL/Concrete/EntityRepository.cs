@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Linq;
 using DAL.Abstract;
 using DAL.Models;
@@ -32,14 +31,14 @@ namespace DAL.Concrete
             return await _dbSet.FindAsync(id);
         }
 
-        public IEnumerable<T> GetItems()
+        public IQueryable<T> GetItems()
         {
-            return _dbSet.AsEnumerable();
+            return _dbSet.AsQueryable();
         }
 
-        public async Task<IEnumerable<T>> GetItemsAsync()
+        public async Task<IQueryable<T>> GetItemsAsync()
         {
-            return await Task.Run(() => _dbSet.AsEnumerable());
+            return await Task.Run(() => _dbSet.AsQueryable());
         }
 
         public async Task SaveAsync()
