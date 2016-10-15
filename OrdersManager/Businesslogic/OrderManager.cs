@@ -10,28 +10,34 @@ namespace Businesslogic
     public class OrderManager:IOrderManager
     {
         private readonly IRepository<Order> _orderRepository;
+        private readonly IRepository<OrderDetail> _orderDetailRepository;
+        private readonly IRepository<Product> _productRepository;
 
-        public OrderManager(IRepository<Order> orderRepository)
+
+        public OrderManager(IRepository<Order> orderRepository, IRepository<OrderDetail> orderDetailRepository, IRepository<Product> productRepository)
         {
             _orderRepository = orderRepository;
+            _orderDetailRepository = orderDetailRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<IEnumerable<OrderToUnload>> GetOrders()
         {
-            var items = (await _orderRepository.GetItemsAsync());
-            var outOrders = new List<OrderToUnload>();
-            foreach (var item in items)
-            {
-                outOrders.AddRange(item.OrderDetail.Select(s => new OrderToUnload()
-                {
-                    OrderId = s.ID,
-                OrderDate = s.Order.OrderDate,
-                ProductId = s.ProductID,
-                ProductName = s.Product.Name,
-                ProductQuantity = s.Quantity,
-                UnitPrice = s.UnitPrice
-            }));
-            }
+            var orders = (await _orderRepository.GetItemsAsync()).ToList();
+            var orderDetails = await _orderDetailRepository.GetItemsAsync();
+            var outOrders = (from o in orders
+                         join od in orderDetails on o.ID equals od.OrderID
+                         select new OrderToUnload()
+                         {
+                             OrderId = o.ID,
+                             OrderDate = o.OrderDate,
+                             ProductId = od.ProductID,
+                             ProductName = od.Product.Name,
+                             ProductQuantity = od.Quantity,
+                             UnitPrice = od.UnitPrice
+                         })
+                         .ToList();
+
             return outOrders;
         }
 

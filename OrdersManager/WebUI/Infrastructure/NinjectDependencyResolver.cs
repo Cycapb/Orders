@@ -24,6 +24,8 @@ namespace WebUI.Infrastructure
         {
             _kernel.Bind<IOrderManager>().To<OrderManager>();
             _kernel.Bind<IRepository<Order>>().To<EntityRepository<Order>>();
+            _kernel.Bind<IRepository<OrderDetail>>().To<EntityRepository<OrderDetail>>();
+            _kernel.Bind<IRepository<Product>>().To<EntityRepository<Product>>();
         }
 
         public object GetService(Type serviceType)
