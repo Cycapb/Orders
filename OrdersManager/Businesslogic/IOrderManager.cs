@@ -1,12 +1,12 @@
-﻿using DAL.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Domain;
 
 namespace Businesslogic
 {
     public interface IOrderManager
     {
-        Task<IEnumerable<Order>> GetOrders();
-        Task UnloadToExcel();
+        Task<IEnumerable<OrderToUnload>> GetOrders();
+        Task UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload);
     }
 }
