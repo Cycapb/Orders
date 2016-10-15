@@ -1,7 +1,15 @@
-﻿
+﻿@model IEnumerable<Domain.OrderToUnload>
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Orders    
+    </div>
+    <div class="panel-body" id="orderPanel">
+        @Html.Partial("_List",Model)
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Unload to Excel","Unload",null,new {@class="btn btn-success btn-sm"})
+    </div>
+</div>

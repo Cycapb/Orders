@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Businesslogic;
+using Domain;
 
 namespace WebUI.Controllers
 {
@@ -17,10 +18,16 @@ namespace WebUI.Controllers
             _orderManager = orderManager;
         }
 
-        // GET: Home
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var items = await _orderManager.GetOrders();
+            return View(items.Take(10));
+        }
+
+        public ActionResult List(int page = 1)
+        {
+            
+            return PartialView();
         }
     }
 }

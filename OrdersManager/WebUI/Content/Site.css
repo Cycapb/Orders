@@ -16,3 +16,9 @@ textarea {
     max-width: 280px;
 }
 
+.homeContainer {
+    width: 1000px;
+    padding-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
