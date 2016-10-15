@@ -18,9 +18,9 @@ namespace WebUI.Controllers
         }
 
         // GET: Home
-        public async Task<int> Index()
+        public ActionResult Index()
         {
-            return (await _orderManager.GetOrders()).Count();
+            return View();
         }
     }
 }
