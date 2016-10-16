@@ -4,8 +4,9 @@
     @Ajax.ActionLink("Unload to Excel", "Unload", null, new AjaxOptions()
 {
     Url = Url.Action("Unload"),
-    UpdateTargetId = "unloadId"
-}, new { @class = "btn btn-success btn-sm pull-right" })
+    UpdateTargetId = "unloadId",
+    OnSuccess = "enableButtons"
+}, new { @class = "btn btn-success btn-sm pull-right", id="showCreateBt", onclick="disableButtons()"})
 </div>
 
 <div class="text-center">

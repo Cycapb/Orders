@@ -1,18 +1,17 @@
 ﻿@model WebUI.Models.EmailViewModel
-<div class="pull-right">
+<div class="pull-right" id="excelDiv">
     @using (Ajax.BeginForm("Unload", null, new AjaxOptions()
     {
         Url = Url.Action("Unload"),
         UpdateTargetId = "unloadId",
         LoadingElementId = "unloadingDiv",
         LoadingElementDuration = 500,
-        OnSuccess = "enableButtons"
+        OnComplete = "enableExcelDiv"
     }, new { @class = "form-inline" }))
     {
         @Html.ValidationMessageFor(x => x.MailTo)
         @Html.TextBoxFor(x => x.MailTo, new {@class="form-control"})
-        
-        <input type="submit" value="Unload to excel" class="btn btn-success btn-sm" id="unloadBt" onclick="disableButtons()"/>
+        <input type="submit" value="Unload to excel" class="btn btn-success btn-sm" id="unloadBt" onclick="disableExcelDiv()"/>
     }
 </div>
 

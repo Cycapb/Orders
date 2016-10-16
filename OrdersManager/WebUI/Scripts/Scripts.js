@@ -10,10 +10,19 @@ function clickDtEnd() {
 };
 function disableButtons() {
     $("#createBt").hide();
+    $("#showCreateBt").hide();
     $("#unloadBt").hide();
 }
 
 function enableButtons() {
     $("#createBt").show();
     $("#unloadBt").show();
+}
+
+function disableExcelDiv() {
+    $("#excelDiv").hide();
+}
+
+function enableExcelDiv() {
+    $("#excelDiv").show();
 }
