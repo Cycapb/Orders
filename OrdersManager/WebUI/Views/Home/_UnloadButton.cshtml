@@ -1,0 +1,5 @@
+﻿@model IEnumerable<Domain.OrderToUnload>
+@Ajax.ActionLink("Unload to Excel", "Unload", new { orders = Model.ToList() }, new AjaxOptions()
+{
+    Url = Url.Action("Unload", new { orders = Model.ToList() })
+}, new { @class = "btn btn-success btn-sm" })
