@@ -5,10 +5,13 @@ namespace Businesslogic
 {
     public class EmailSettingsProvider:IMailSettingProvider
     {
+        public string MailTo { get; set; }
+
         public EmailSettings GetSettings()
         {
             return new EmailSettings()
             {
+                MailTo = this.MailTo,
                 MailFrom = ConfigurationManager.AppSettings["MailFrom"],
                 UserName = ConfigurationManager.AppSettings["UserName"],
                 Password = ConfigurationManager.AppSettings["Password"],
