@@ -2,10 +2,11 @@
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
 
 namespace Businesslogic
 {
-    public class MailReporter : IReporter
+    public class MailReporter : IMailReporter
     {
         private readonly IMailSettingProvider _settingsProvider;
 
@@ -14,11 +15,13 @@ namespace Businesslogic
             _settingsProvider = settingsProvider;
         }
 
+        public string MailTo { get; set; }
+
         public async Task Report(string fileName)
         {
-            var smtpClient = CreateSmtpClient();
             var emailSettings = _settingsProvider.GetSettings();
-
+            emailSettings.MailTo = this.MailTo;
+            var smtpClient = CreateSmtpClient(emailSettings);
 
             StringBuilder messageBody = new StringBuilder();
             messageBody.Append("Excel file with orders is in attachement");
@@ -31,9 +34,8 @@ namespace Businesslogic
             smtpClient.Dispose();
         }
 
-        private SmtpClient CreateSmtpClient()
+        private SmtpClient CreateSmtpClient(EmailSettings emailSettings)
         {
-            var emailSettings = _settingsProvider.GetSettings();
             var client = new SmtpClient()
             {
                 Host = emailSettings.ServerName,

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ClosedXML.Excel;
 using Domain;
@@ -7,8 +8,9 @@ namespace Businesslogic
 {
     public class OrdersToExcelUnloader:IUnloader<OrderToUnload>
     {
-        public void Unload(IEnumerable<OrderToUnload> items)
+        public string Unload(IEnumerable<OrderToUnload> items)
         {
+            var fileName = @"D:\Order.xlsx";
             var workBook = new XLWorkbook();
             var workSheet = workBook.Worksheets.Add("Orders");
             workSheet.Cell("A1").Value = "Order_ID";
@@ -35,7 +37,8 @@ namespace Businesslogic
                 workSheet.Cell(currentCell).FormulaA1 = totalPrice;
             }
 
-            workBook.SaveAs(@"D:\Order.xlsx");
+            workBook.SaveAs(fileName);
+            return fileName;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace Businesslogic
     public interface IOrderManager
     {
         Task<IEnumerable<OrderToUnload>> GetOrders();
-        Task UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload);
+        Task<string> UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload);
     }
 }

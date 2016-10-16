@@ -37,7 +37,7 @@ namespace Businesslogic
             return outOrders;
         }
 
-        public Task UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload)
+        public Task<string> UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload)
         {
             return Task.Run(() => _excelUnloader.Unload(ordersToUnload));
         }

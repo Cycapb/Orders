@@ -2,8 +2,9 @@
 
 namespace Businesslogic
 {
-    public interface IReporter
+    public interface IMailReporter
     {
+        string MailTo { get; set; }
         Task Report(string fileName);
     }
 }

@@ -53,7 +53,7 @@
     <Compile Include="EmailSettingsProvider.cs" />
     <Compile Include="IMailSettingProvider.cs" />
     <Compile Include="IOrderManager.cs" />
-    <Compile Include="IReporter.cs" />
+    <Compile Include="IMailReporter.cs" />
     <Compile Include="IUnloader.cs" />
     <Compile Include="MailReporter.cs" />
     <Compile Include="OrderManager.cs" />

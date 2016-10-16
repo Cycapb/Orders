@@ -14,12 +14,14 @@ namespace WebUI.Controllers
     {
         private readonly IOrderManager _orderManager;
         private readonly IPageCreator _pageCreator;
+        private readonly IMailReporter _reporter;
         private readonly int _itemsPerPage;
 
-        public HomeController(IOrderManager orderManager, IPageCreator pageCreator)
+        public HomeController(IOrderManager orderManager, IPageCreator pageCreator,IMailReporter reporter)
         {
             _orderManager = orderManager;
             _pageCreator = pageCreator;
+            _reporter = reporter;
             _itemsPerPage = 10;
         }
 
@@ -54,7 +56,9 @@ namespace WebUI.Controllers
             if (Session != null)
             {
                 var orders = (IEnumerable<OrderToUnload>)Session["Orders"];
-                await _orderManager.UnloadToExcel(orders);
+                var fileName = await _orderManager.UnloadToExcel(orders);
+                _reporter.MailTo = "df34";
+                await _reporter.Report(fileName);
             }
         }
     }
