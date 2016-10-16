@@ -1,0 +1,9 @@
+﻿@using Paginator.Abstract
+@using WebUI.Models
+@{
+    var creator = (IPageCreator)ViewBag.PageCreator;
+    var pagingInfo = (PagingInfo)ViewBag.PagingInfo;
+    var dtBeg = (DateTime) ViewBag.DtBeg;
+    var dtEnd = (DateTime) ViewBag.DtEnd;
+}
+@creator.CreatePages(pagingInfo.ItemsPerPage, pagingInfo.CurrentPage, pagingInfo.TotalItems, "#orderPanel", x => Url.Action("ListByDate", new { dtBeg = dtBeg, dtEnd = dtEnd, page = x }))

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Businesslogic;
@@ -8,6 +7,9 @@ using DAL.Concrete;
 using DAL.Models;
 using Domain;
 using Ninject;
+using Paginator.Abstract;
+using Paginator.Concrete;
+
 
 namespace WebUI.Infrastructure
 {
@@ -28,6 +30,8 @@ namespace WebUI.Infrastructure
             _kernel.Bind<IRepository<OrderDetail>>().To<EntityRepository<OrderDetail>>();
             _kernel.Bind<IRepository<Product>>().To<EntityRepository<Product>>();
             _kernel.Bind<IUnloader<OrderToUnload>>().To<OrdersToExcelUnloader>();
+            _kernel.Bind<IPageCreator>().To<AjaxPageCreator>();
+            _kernel.Bind<IPaginator>().To<Paginator.Concrete.Paginator>();
         }
 
         public object GetService(Type serviceType)

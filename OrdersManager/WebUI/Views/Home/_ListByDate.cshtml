@@ -1,3 +1,8 @@
 ﻿@model IEnumerable<Domain.OrderToUnload>
 @Html.Partial("_Orders", Model)
-@Html.Partial("_UnloadButton", Model)
+<div class="form-inline">
+    @Html.Partial("_UnloadButton", Model)
+    <div class="text-center">
+        @Html.Partial("_PageLinks")
+    </div>
+</div>
