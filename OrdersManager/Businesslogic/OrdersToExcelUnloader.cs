@@ -22,6 +22,13 @@ namespace Businesslogic
 
             workSheet.Cell(2, 1).Value = items;
 
+            var rngTable = workSheet.Range("A1:G1");
+            var rngHeaders = rngTable.Range("A1:G1");
+            rngHeaders.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            rngHeaders.Style.Font.Bold = true;
+            rngHeaders.Style.Font.FontColor = XLColor.DarkBlue;
+            rngHeaders.Style.Fill.BackgroundColor = XLColor.Aqua;
+
             workBook.SaveAs(@"D:\Order.xlsx");
         }
     }
