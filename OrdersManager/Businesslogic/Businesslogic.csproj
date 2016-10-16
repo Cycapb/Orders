@@ -44,6 +44,7 @@
     <Compile Include="IOrderManager.cs" />
     <Compile Include="IUnloader.cs" />
     <Compile Include="OrderManager.cs" />
+    <Compile Include="OrdersToExcelUnloader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
