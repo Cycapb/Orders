@@ -10,10 +10,12 @@ namespace Businesslogic
     public class OrderManager:IOrderManager
     {
         private readonly IRepository<Order> _orderRepository;
+        private readonly IUnloader<OrderToUnload> _excelUnloader;
 
-        public OrderManager(IRepository<Order> orderRepository)
+        public OrderManager(IRepository<Order> orderRepository, IUnloader<OrderToUnload> excelUnloader)
         {
             _orderRepository = orderRepository;
+            _excelUnloader = excelUnloader;
         }
 
         public async Task<IEnumerable<OrderToUnload>> GetOrders()
@@ -37,7 +39,7 @@ namespace Businesslogic
 
         public Task UnloadToExcel(IEnumerable<OrderToUnload> ordersToUnload)
         {
-            throw new System.NotImplementedException();
+            return Task.Run(() => _excelUnloader.Unload(ordersToUnload));
         }
     }
 }

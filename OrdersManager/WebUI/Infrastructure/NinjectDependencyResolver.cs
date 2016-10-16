@@ -6,6 +6,7 @@ using Businesslogic;
 using DAL.Abstract;
 using DAL.Concrete;
 using DAL.Models;
+using Domain;
 using Ninject;
 
 namespace WebUI.Infrastructure
@@ -26,6 +27,7 @@ namespace WebUI.Infrastructure
             _kernel.Bind<IRepository<Order>>().To<EntityRepository<Order>>();
             _kernel.Bind<IRepository<OrderDetail>>().To<EntityRepository<OrderDetail>>();
             _kernel.Bind<IRepository<Product>>().To<EntityRepository<Product>>();
+            _kernel.Bind<IUnloader<OrderToUnload>>().To<OrdersToExcelUnloader>();
         }
 
         public object GetService(Type serviceType)

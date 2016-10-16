@@ -31,13 +31,21 @@ namespace WebUI.Controllers
 
         public async Task<ActionResult> ListByDate(DateTime dtBeg, DateTime dtEnd)
         {
-            var items = (await _orderManager.GetOrders()).Where(x => x.OrderDate >= dtBeg && x.OrderDate <= dtEnd);
+            var items = (await _orderManager.GetOrders()).Where(x => x.OrderDate >= dtBeg && x.OrderDate <= dtEnd).ToList();
+            if (Session != null)
+            {
+                Session["Orders"] = items;
+            }
             return PartialView("_ListByDate", items.Take(10));
         }
 
-        public async Task Unload(IEnumerable<OrderToUnload> orders)
+        public async Task Unload()
         {
-            await _orderManager.UnloadToExcel(orders);
+            if (Session != null)
+            {
+                var orders = (IEnumerable<OrderToUnload>)Session["Orders"];
+                await _orderManager.UnloadToExcel(orders);
+            }
         }
     }
 }

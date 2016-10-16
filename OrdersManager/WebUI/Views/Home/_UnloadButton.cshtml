@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Domain.OrderToUnload>
 <div class="pull-right">
-    @Ajax.ActionLink("Unload to Excel", "Unload", new {orders = Model.ToList()}, new AjaxOptions()
+    @Ajax.ActionLink("Unload to Excel","Unload", null,new AjaxOptions()
     {
-        Url = Url.Action("Unload", new {orders = Model.ToList()})
-    }, new {@class = "btn btn-success btn-sm"})
+        Url = Url.Action("Unload")
+    }, new {@class="btn btn-success btn-sm"})
 </div>
 
