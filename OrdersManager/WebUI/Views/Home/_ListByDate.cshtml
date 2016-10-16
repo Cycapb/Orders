@@ -1,8 +1,13 @@
 ﻿@model IEnumerable<Domain.OrderToUnload>
 @Html.Partial("_Orders", Model)
-<div class="form-inline">
-    @Html.Partial("_UnloadButton", Model)
-    <div class="text-center">
-        @Html.Partial("_PageLinks")
-    </div>
+<div id="unloadId">
+    @Ajax.ActionLink("Unload to Excel", "Unload", null, new AjaxOptions()
+{
+    Url = Url.Action("Unload"),
+    UpdateTargetId = "unloadId"
+}, new { @class = "btn btn-success btn-sm pull-right" })
+</div>
+
+<div class="text-center">
+    @Html.Partial("_PageLinks")
 </div>

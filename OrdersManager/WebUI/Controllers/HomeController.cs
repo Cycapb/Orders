@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using Businesslogic;
 using Domain;
@@ -51,15 +55,28 @@ namespace WebUI.Controllers
             return PartialView("_ListByDate", orders);
         }
 
-        public async Task Unload()
+       
+        public ActionResult Unload()
         {
-            if (Session != null)
+            var model = new EmailViewModel();
+            return PartialView("_UnloadButton",model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Unload(EmailViewModel model)
+        {
+            if (ModelState.IsValid)
             {
-                var orders = (IEnumerable<OrderToUnload>)Session["Orders"];
-                var fileName = await _orderManager.UnloadToExcel(orders);
-                _reporter.MailTo = "df34";
-                await _reporter.Report(fileName);
+                if (Session != null)
+                {
+                    var orders = (IEnumerable<OrderToUnload>)Session["Orders"];
+                    var fileName = await _orderManager.UnloadToExcel(orders);
+                    _reporter.MailTo = model.MailTo;
+                    await _reporter.Report(fileName);
+                    return RedirectToAction("Unload");
+                }
             }
+            return PartialView("_UnloadButton", model);
         }
     }
 }

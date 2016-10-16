@@ -1,12 +1,18 @@
-﻿@model IEnumerable<Domain.OrderToUnload>
-<span class="text-center" style="display: none" id="unloadingSpan">Unloading to Excel</span>
+﻿@model WebUI.Models.EmailViewModel
 <div class="pull-right">
-    @Ajax.ActionLink("Unload to Excel","Unload", null,new AjaxOptions()
+    @using (Ajax.BeginForm("Unload", null, new AjaxOptions()
     {
         Url = Url.Action("Unload"),
+        UpdateTargetId = "unloadId",
         LoadingElementId = "unloadingDiv",
         LoadingElementDuration = 500,
         OnSuccess = "enableButtons"
-    }, new {@class="btn btn-success btn-sm", id="unloadBt", onclick="disableButtons()"})
+    }, new { @class = "form-inline" }))
+    {
+        @Html.ValidationMessageFor(x => x.MailTo)
+        @Html.TextBoxFor(x => x.MailTo, new {@class="form-control"})
+        
+        <input type="submit" value="Unload to excel" class="btn btn-success btn-sm" id="unloadBt" onclick="disableButtons()"/>
+    }
 </div>
 
