@@ -4,12 +4,24 @@
 }
 <div class="panel panel-primary">
     <div class="panel-heading">
-        Orders    
+        @using (Ajax.BeginForm("ListByDate", null,new AjaxOptions()
+        {
+            Url = Url.Action("ListByDate"),
+            UpdateTargetId   = "orderPanel"
+        }, new {@class="form-inline"}))
+        {
+            @Html.Label("Dates From:")
+            @Html.TextBox("DtBeg",null,new {@class="form-control"})
+            @Html.Label("To:")
+            @Html.TextBox("DtEnd", null, new {@class="form-control"})
+
+            <input type="submit" value="Create report" class="btn btn-success btn-sm"/>
+        }
     </div>
     <div class="panel-body" id="orderPanel">
         @Html.Partial("_List",Model)
     </div>
     <div class="panel-footer">
-        @Html.ActionLink("Unload to Excel","Unload",null,new {@class="btn btn-success btn-sm"})
+        @Html.ActionLink("Unload to Excel", "Unload", null, new {@class = "btn btn-success btn-sm"})
     </div>
 </div>

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Businesslogic;
-using Domain;
 
 namespace WebUI.Controllers
 {
@@ -28,6 +25,12 @@ namespace WebUI.Controllers
         {
             
             return PartialView();
+        }
+
+        public async Task<ActionResult> ListByDate(DateTime dtBeg, DateTime dtEnd)
+        {
+            var items = (await _orderManager.GetOrders()).Where(x => x.OrderDate >= dtBeg && x.OrderDate <= dtEnd);
+            return PartialView("_List", items.Take(10));
         }
     }
 }
