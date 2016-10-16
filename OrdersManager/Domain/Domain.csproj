@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailSettings.cs" />
     <Compile Include="OrderToUnload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
