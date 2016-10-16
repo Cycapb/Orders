@@ -11,9 +11,9 @@
         }, new {@class="form-inline"}))
         {
             @Html.Label("Dates From:")
-            @Html.TextBox("DtBeg",null,new {@class="form-control"})
+            @Html.TextBox("DtBeg",null,new {@class="form-control",onclick="clickDtBeg()",Value=DateTime.Today.ToShortDateString()})
             @Html.Label("To:")
-            @Html.TextBox("DtEnd", null, new {@class="form-control"})
+            @Html.TextBox("DtEnd", null, new {@class="form-control",onclick="clickDtEnd()", Value=DateTime.Today.ToShortDateString()})
 
             <input type="submit" value="Create report" class="btn btn-success btn-sm"/>
         }

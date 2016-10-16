@@ -7,12 +7,20 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/Scripts.js"></script>
 </head>
 <body>
 <div class="homeContainer">
     @RenderBody()
+    <script type="text/javascript">
+        $(document).ready(clickDtBeg);
+        $(document).ready(clickDtEnd);
+    </script>
 </div>
 </body>
 </html>
