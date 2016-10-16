@@ -29,12 +29,6 @@ namespace WebUI.Controllers
             return View(items.Take(10));
         }
 
-        public ActionResult List(int page = 1)
-        {
-            
-            return PartialView();
-        }
-
         public async Task<ActionResult> ListByDate(DateTime dtBeg, DateTime dtEnd, int page = 1)
         {
             var items = (await _orderManager.GetOrders()).Where(x => x.OrderDate >= dtBeg && x.OrderDate <= dtEnd).ToList();
