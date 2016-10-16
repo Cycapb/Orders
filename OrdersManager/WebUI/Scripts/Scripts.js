@@ -1,8 +1,10 @@
-﻿function clickDtEnd() {
-    $('#DtEnd').datepicker({
+﻿function clickDtBeg() {
+    $("#dtBeg").datepicker({
+        language: "ru"
     });
 };
-function clickDtBeg() {
-    $('#DtBeg').datepicker({
+function clickDtEnd() {
+    $("#dtEnd").datepicker({
+        language: "ru"
     });
 };

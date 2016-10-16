@@ -12,7 +12,7 @@
     {
         <tr>
             <td>@order.OrderId</td>
-            <td>@order.OrderDate?.Value.Date</td>
+            <td>@order.OrderDate.Value.ToShortDateString()</td>
             <td>@order.ProductId</td>
             <td>@order.ProductName</td>
             <td>@order.ProductQuantity</td>
