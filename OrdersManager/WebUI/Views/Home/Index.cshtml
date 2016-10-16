@@ -7,7 +7,8 @@
         @using (Ajax.BeginForm("ListByDate", null, new AjaxOptions()
         {
             Url = Url.Action("ListByDate"),
-            UpdateTargetId = "orderPanel"
+            UpdateTargetId = "orderPanel",
+            OnSuccess = "enableButtons"
         }, new {@class = "form-inline"}))
         {
             @Html.Label("Dates From:")
@@ -15,7 +16,7 @@
             @Html.Label("To:")
             @Html.TextBox("dtEnd", null, new {@class = "form-control", onclick = "clickDtEnd()", Value = DateTime.Today.ToShortDateString()})
 
-            <input type="submit" value="Create report" class="btn btn-success btn-sm"/>
+            <input type="submit" value="Create report" class="btn btn-success btn-sm" id="createBt" onclick="disableButtons()"/>
         }
     </div>
     <div class="panel-body" id="orderPanel">
