@@ -9,7 +9,6 @@ namespace Businesslogic
     {
         public void Unload(IEnumerable<OrderToUnload> items)
         {
-            var orders = items.ToList();
             var workBook = new XLWorkbook();
             var workSheet = workBook.Worksheets.Add("Orders");
             workSheet.Cell("A1").Value = "Order_ID";
@@ -28,6 +27,13 @@ namespace Businesslogic
             rngHeaders.Style.Font.Bold = true;
             rngHeaders.Style.Font.FontColor = XLColor.DarkBlue;
             rngHeaders.Style.Fill.BackgroundColor = XLColor.Aqua;
+
+            for (int i = 2; i <= workSheet.Rows().Count(); i++)
+            {
+                var currentCell = "G" + i;
+                var totalPrice = "=E" + i + "*" + "F" + i;
+                workSheet.Cell(currentCell).FormulaA1 = totalPrice;
+            }
 
             workBook.SaveAs(@"D:\Order.xlsx");
         }
