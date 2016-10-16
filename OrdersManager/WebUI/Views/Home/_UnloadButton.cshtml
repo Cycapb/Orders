@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Domain.OrderToUnload>
+<span class="text-center" style="display: none" id="unloadingSpan">Unloading to Excel</span>
 <div class="pull-right">
     @Ajax.ActionLink("Unload to Excel","Unload", null,new AjaxOptions()
     {
-        Url = Url.Action("Unload")
-    }, new {@class="btn btn-success btn-sm", id="unloadBt"})
+        Url = Url.Action("Unload"),
+        LoadingElementId = "unloadingDiv",
+        LoadingElementDuration = 500,
+        OnSuccess = "enableButtons"
+    }, new {@class="btn btn-success btn-sm", id="unloadBt", onclick="disableButtons()"})
 </div>
 
