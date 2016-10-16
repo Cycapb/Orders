@@ -25,8 +25,8 @@ namespace WebUI.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var items = await _orderManager.GetOrders();
-            return View(items.Take(10));
+            var items = (await _orderManager.GetOrders()).ToList();
+            return View(items.Skip(items.Count()-10).Take(10));
         }
 
         public async Task<ActionResult> ListByDate(DateTime dtBeg, DateTime dtEnd, int page = 1)
