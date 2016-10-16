@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace Businesslogic
 {
-    public class MailReporter:IReporter
+    public class MailReporter : IReporter
     {
         private readonly IMailSettingProvider _settingsProvider;
+
         public MailReporter(IMailSettingProvider settingsProvider)
         {
             _settingsProvider = settingsProvider;
@@ -17,7 +18,7 @@ namespace Businesslogic
         {
             var smtpClient = CreateSmtpClient();
             var emailSettings = _settingsProvider.GetSettings();
-            
+
 
             StringBuilder messageBody = new StringBuilder();
             messageBody.Append("Excel file with orders is in attachement");
@@ -42,6 +43,5 @@ namespace Businesslogic
             };
             return client;
         }
-    }
     }
 }

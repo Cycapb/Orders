@@ -3,7 +3,7 @@ using Domain;
 
 namespace Businesslogic
 {
-    public class EmailSettingsProvider:IMailSettingProvider
+    public class EmailSettingsProvider : IMailSettingProvider
     {
         public string MailTo { get; set; }
 
@@ -20,4 +20,5 @@ namespace Businesslogic
                 UseSsl = bool.Parse(ConfigurationManager.AppSettings["UseSsl"])
             };
         }
+    }
 }
