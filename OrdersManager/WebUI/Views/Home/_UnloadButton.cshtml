@@ -9,8 +9,11 @@
         OnComplete = "enableExcelDiv"
     }, new { @class = "form-inline" }))
     {
-        @Html.ValidationMessageFor(x => x.MailTo)
-        @Html.TextBoxFor(x => x.MailTo, new {@class="form-control"})
+        <div class="form-group">
+            @Html.ValidationMessageFor(x => x.MailTo)
+            <label>Email:</label>
+            @Html.TextBoxFor(x => x.MailTo, new { @class = "form-control" })
+        </div>
         <input type="submit" value="Unload to excel" class="btn btn-success btn-sm" id="unloadBt" onclick="disableExcelDiv()"/>
     }
 </div>
