@@ -11,6 +11,7 @@ namespace WebUI
                 "~/Scripts/jquery.unobtrusive-ajax.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/bootstrap-datepicker.js",
+                "~/Scripts/locales/bootstrap-datepicker.ru.min.js",
                 "~/Scripts/Scripts.js"));
 
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(

@@ -1,7 +1,11 @@
 ﻿@using System.Globalization
+
+
 @model IEnumerable<Domain.OrderToUnload>
 @{
     ViewBag.Title = "Orders";
+    var dtBeg = Convert.ToString(((DateTime) ViewBag.DtBeg).ToShortDateString(), CultureInfo.InvariantCulture);
+    var dtEnd = Convert.ToString(((DateTime)ViewBag.DtEnd).ToShortDateString(), CultureInfo.InvariantCulture);
 }
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -13,9 +17,9 @@
         }, new {@class = "form-inline"}))
         {
             @Html.Label("Dates From:")
-            @Html.TextBox("dtBeg", null, new {@class = "form-control", onclick = "clickDtBeg()", Value = Convert.ToString(((DateTime)(ViewBag.DtBeg)).ToShortDateString(),CultureInfo.InvariantCulture) })
+            @Html.TextBox("dtBeg", null, new {@class = "form-control", onclick = "clickDtBeg()", Value = dtBeg })
             @Html.Label("To:")
-            @Html.TextBox("dtEnd", null, new {@class = "form-control", onclick = "clickDtEnd()", Value = Convert.ToString(((DateTime)(ViewBag.DtEnd)).ToShortDateString(), CultureInfo.InvariantCulture) })
+            @Html.TextBox("dtEnd", null, new {@class = "form-control", onclick = "clickDtEnd()", Value = dtEnd })
 
             <input type="submit" value="Create report" class="btn btn-success btn-sm" id="createBt" onclick="disableButtons()"/>
         }

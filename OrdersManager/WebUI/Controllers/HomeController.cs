@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Businesslogic;
 using Domain;
 using Paginator.Abstract;
-using WebUI.Infrastructure;
 using WebUI.Models;
 
 namespace WebUI.Controllers

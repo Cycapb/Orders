@@ -19,7 +19,7 @@
     {
         <tr>
             <td>@order.OrderId</td>
-            <td>@Convert.ToString(order.OrderDate.Value.ToShortDateString(),CultureInfo.InvariantCulture)</td>
+            <td>@order.OrderDate.Value.ToShortDateString()</td>
             <td>@order.ProductId</td>
             <td>@order.ProductName</td>
             <td>@order.ProductQuantity</td>
