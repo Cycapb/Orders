@@ -1,11 +1,9 @@
 ﻿function clickDtBeg() {
     $("#dtBeg").datepicker({
-        language: "ru"
     });
 };
 function clickDtEnd() {
     $("#dtEnd").datepicker({
-        language: "ru"
     });
 };
 function disableButtons() {
@@ -20,9 +18,13 @@ function enableButtons() {
 }
 
 function disableExcelDiv() {
+    $("#createBt").hide();
     $("#excelDiv").hide();
+    $("#pages").hide();
 }
 
 function enableExcelDiv() {
+    $("#createBt").show();
     $("#excelDiv").show();
+    $("#pages").show();
 }
