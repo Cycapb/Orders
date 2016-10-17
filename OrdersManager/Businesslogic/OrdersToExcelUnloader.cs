@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using ClosedXML.Excel;
 using Domain;
 
@@ -30,7 +28,9 @@ namespace Businesslogic
             rngHeaders.Style.Font.FontColor = XLColor.DarkBlue;
             rngHeaders.Style.Fill.BackgroundColor = XLColor.Aqua;
 
-            for (int i = 2; i <= workSheet.Rows().Count(); i++)
+            var rowcount = workSheet.RowCount() >= 65535? 65534 : workSheet.RowCount();
+
+            for (int i = 2; i <= rowcount; i++)
             {
                 var currentCell = "G" + i;
                 var totalPrice = "=E" + i + "*" + "F" + i;
