@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ClosedXML.Excel;
 using Domain;
 
@@ -29,7 +30,7 @@ namespace Businesslogic
             rngHeaders.Style.Font.FontColor = XLColor.DarkBlue;
             rngHeaders.Style.Fill.BackgroundColor = XLColor.Aqua;
 
-            var rowcount = workSheet.RowCount() >= 65535? 65534 : workSheet.RowCount();
+            var rowcount = items.Count() >= 65535? 65534 : items.Count();
 
             for (int i = 2; i <= rowcount; i++)
             {
