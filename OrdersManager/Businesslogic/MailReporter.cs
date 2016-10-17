@@ -9,9 +9,9 @@ namespace Businesslogic
 {
     public class MailReporter : IMailReporter
     {
-        private readonly IMailSettingProvider _settingsProvider;
+        private readonly IMailSettingsProvider _settingsProvider;
 
-        public MailReporter(IMailSettingProvider settingsProvider)
+        public MailReporter(IMailSettingsProvider settingsProvider)
         {
             _settingsProvider = settingsProvider;
         }

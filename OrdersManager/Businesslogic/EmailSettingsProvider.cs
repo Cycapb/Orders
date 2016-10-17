@@ -3,7 +3,7 @@ using Domain;
 
 namespace Businesslogic
 {
-    public class EmailSettingsProvider : IMailSettingProvider
+    public class EmailSettingsProvider : IMailSettingsProvider
     {
         public EmailSettings GetSettings()
         {

@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailSettingsProvider.cs" />
-    <Compile Include="IMailSettingProvider.cs" />
+    <Compile Include="IMailSettingsProvider.cs" />
     <Compile Include="IOrderManager.cs" />
     <Compile Include="IMailReporter.cs" />
     <Compile Include="IUnloader.cs" />

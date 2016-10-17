@@ -2,7 +2,7 @@
 
 namespace Businesslogic
 {
-    public interface IMailSettingProvider
+    public interface IMailSettingsProvider
     {
         EmailSettings GetSettings();
     }

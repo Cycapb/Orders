@@ -33,7 +33,7 @@ namespace WebUI.Infrastructure
             _kernel.Bind<IPageCreator>().To<AjaxPageCreator>();
             _kernel.Bind<IPaginator>().To<Paginator.Concrete.Paginator>();
             _kernel.Bind<IMailReporter>().To<MailReporter>();
-            _kernel.Bind<IMailSettingProvider>().To<EmailSettingsProvider>();
+            _kernel.Bind<IMailSettingsProvider>().To<EmailSettingsProvider>();
         }
 
         public object GetService(Type serviceType)
