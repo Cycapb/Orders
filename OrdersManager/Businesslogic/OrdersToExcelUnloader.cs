@@ -45,7 +45,9 @@ namespace Businesslogic
             }
             catch (Exception)
             {
-                fileName = System.IO.Path.GetTempPath() + @"\Orders" + DateTime.Now + ".xlsx"; ;
+                Random rnd = new Random();
+                fileName = System.IO.Path.GetTempPath() + @"\Orders_" + rnd.Next(1, 100) + ".xlsx"; ;
+                workBook.SaveAs(fileName);
             }
             
             return fileName;
