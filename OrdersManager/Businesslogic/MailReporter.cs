@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,18 @@ namespace Businesslogic
             StringBuilder messageBody = new StringBuilder();
             messageBody.Append("Excel file with orders is in attachement");
 
-            MailMessage mailMessage = new MailMessage(emailSettings.MailFrom, emailSettings.MailTo,
-                "Report via Excel", messageBody.ToString());
-            mailMessage.Attachments.Add(new Attachment(fileName));
+            try
+            {
+                MailMessage mailMessage = new MailMessage(emailSettings.MailFrom, emailSettings.MailTo,
+                    "Report via Excel", messageBody.ToString());
+                mailMessage.Attachments.Add(new Attachment(fileName));
 
-            await smtpClient.SendMailAsync(mailMessage);
-            smtpClient.Dispose();
+                await smtpClient.SendMailAsync(mailMessage);
+            }
+            finally
+            {
+                smtpClient.Dispose();
+            }
         }
 
         private SmtpClient CreateSmtpClient(EmailSettings emailSettings)

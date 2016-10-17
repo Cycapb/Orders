@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ClosedXML.Excel;
 using Domain;
 
@@ -37,7 +38,15 @@ namespace Businesslogic
                 workSheet.Cell(currentCell).FormulaA1 = totalPrice;
             }
 
-            workBook.SaveAs(fileName);
+            try
+            {
+                workBook.SaveAs(fileName);
+            }
+            catch (Exception)
+            {
+                fileName = System.IO.Path.GetTempPath() + @"\Orders" + DateTime.Now + ".xlsx"; ;
+            }
+            
             return fileName;
         }
     }
