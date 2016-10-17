@@ -32,10 +32,10 @@ namespace Businesslogic
 
             var rowcount = items.Count() >= 65535? 65534 : items.Count();
 
-            for (int i = 2; i <= rowcount; i++)
+            for (int i = 1; i <= rowcount; i++)
             {
-                var currentCell = "G" + i;
-                var totalPrice = "=E" + i + "*" + "F" + i;
+                var currentCell = "G" + (i + 1);
+                var totalPrice = "=E" + (i +1) + "*" + "F" + (i +1);
                 workSheet.Cell(currentCell).FormulaA1 = totalPrice;
             }
 
