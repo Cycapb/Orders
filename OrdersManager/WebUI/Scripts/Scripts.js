@@ -1,11 +1,13 @@
-﻿function clickDtBeg() {
-    $("#dtBeg").datepicker({
-    });
-};
-function clickDtEnd() {
+﻿function clickDtEnd() {
     $("#dtEnd").datepicker({
     });
 };
+
+function clickDtBeg() {
+    $("#dtBeg").datepicker({
+    });
+};
+
 function disableButtons() {
     $("#createBt").hide();
     $("#showCreateBt").hide();

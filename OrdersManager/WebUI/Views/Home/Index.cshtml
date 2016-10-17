@@ -13,9 +13,9 @@
         }, new {@class = "form-inline"}))
         {
             @Html.Label("Dates From:")
-            @Html.TextBox("dtBeg", null, new {@class = "form-control", onclick = "clickDtBeg()", Value = Convert.ToString(DateTime.Today.ToShortDateString(),CultureInfo.InvariantCulture) })
+            @Html.TextBox("dtBeg", null, new {@class = "form-control", onclick = "clickDtBeg()", Value = Convert.ToString(((DateTime)(ViewBag.DtBeg)).ToShortDateString(),CultureInfo.InvariantCulture) })
             @Html.Label("To:")
-            @Html.TextBox("dtEnd", null, new {@class = "form-control", onclick = "clickDtEnd()", Value = Convert.ToString(DateTime.Today.ToShortDateString(), CultureInfo.InvariantCulture) })
+            @Html.TextBox("dtEnd", null, new {@class = "form-control", onclick = "clickDtEnd()", Value = Convert.ToString(((DateTime)(ViewBag.DtEnd)).ToShortDateString(), CultureInfo.InvariantCulture) })
 
             <input type="submit" value="Create report" class="btn btn-success btn-sm" id="createBt" onclick="disableButtons()"/>
         }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Businesslogic;
 using Domain;
 using Paginator.Abstract;
+using WebUI.Infrastructure;
 using WebUI.Models;
 
 namespace WebUI.Controllers
@@ -28,7 +29,10 @@ namespace WebUI.Controllers
         public async Task<ActionResult> Index()
         {
             var items = (await _orderManager.GetOrders()).ToList();
-            return View(items.Skip(items.Count()-10).Take(10));
+            var orders = items.Skip(items.Count() - 10).Take(10).ToList();
+            ViewBag.DtBeg = orders.First().OrderDate;
+            ViewBag.DtEnd = orders.Last().OrderDate;
+            return View(orders);
         }
 
         public async Task<ActionResult> ListByDate(DateTime dtBeg, DateTime dtEnd, int page = 1)

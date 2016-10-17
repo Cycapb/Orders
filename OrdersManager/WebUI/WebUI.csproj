@@ -263,6 +263,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\DateCheckerAttribute.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\EmailViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
